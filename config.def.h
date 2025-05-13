@@ -173,43 +173,43 @@ static const char dmenufont[]            = "monospace:size=10";
 static char c000000[]                    = "#000000"; // placeholder value
 
 static char normfgcolor[]                = "#bbbbbb";
-static char normbgcolor[]                = "#222222";
+static char normbgcolor[]                = "#1d2021";
 static char normbordercolor[]            = "#444444";
 static char normfloatcolor[]             = "#db8fd9";
 
-static char selfgcolor[]                 = "#eeeeee";
-static char selbgcolor[]                 = "#005577";
-static char selbordercolor[]             = "#005577";
-static char selfloatcolor[]              = "#005577";
+static char selfgcolor[]                 = "#bbbbbb";
+static char selbgcolor[]                 = "#f0c674";
+static char selbordercolor[]             = "#f0c674";
+static char selfloatcolor[]              = "#f0c674";
 
-static char titlenormfgcolor[]           = "#bbbbbb";
-static char titlenormbgcolor[]           = "#222222";
-static char titlenormbordercolor[]       = "#444444";
-static char titlenormfloatcolor[]        = "#db8fd9";
+static char titlenormfgcolor[]           = "#27292c";
+static char titlenormbgcolor[]           = "#27292c";
+static char titlenormbordercolor[]       = "#27292c";
+static char titlenormfloatcolor[]        = "#27292c";
 
-static char titleselfgcolor[]            = "#eeeeee";
-static char titleselbgcolor[]            = "#005577";
-static char titleselbordercolor[]        = "#005577";
-static char titleselfloatcolor[]         = "#005577";
+static char titleselfgcolor[]            = "#000000";
+static char titleselbgcolor[]            = "#f0c674";
+static char titleselbordercolor[]        = "#f0c674";
+static char titleselfloatcolor[]         = "#f0c674";
 
 static char tagsnormfgcolor[]            = "#bbbbbb";
-static char tagsnormbgcolor[]            = "#222222";
+static char tagsnormbgcolor[]            = "#1d2021";
 static char tagsnormbordercolor[]        = "#444444";
 static char tagsnormfloatcolor[]         = "#db8fd9";
 
 static char tagsselfgcolor[]             = "#eeeeee";
-static char tagsselbgcolor[]             = "#005577";
-static char tagsselbordercolor[]         = "#005577";
-static char tagsselfloatcolor[]          = "#005577";
+static char tagsselbgcolor[]             = "#f0c674";
+static char tagsselbordercolor[]         = "#f0c674";
+static char tagsselfloatcolor[]          = "#f0c674";
 
-static char hidnormfgcolor[]             = "#005577";
+static char hidnormfgcolor[]             = "#f0c674";
 static char hidselfgcolor[]              = "#227799";
-static char hidnormbgcolor[]             = "#222222";
-static char hidselbgcolor[]              = "#222222";
+static char hidnormbgcolor[]             = "#1d2021";
+static char hidselbgcolor[]              = "#1d2021";
 
 static char urgfgcolor[]                 = "#bbbbbb";
-static char urgbgcolor[]                 = "#222222";
-static char urgbordercolor[]             = "#ff0000";
+static char urgbgcolor[]                 = "#1d2021";
+static char urgbordercolor[]             = "#f0c674";
 static char urgfloatcolor[]              = "#db8fd9";
 
 #if RENAMED_SCRATCHPADS_PATCH
@@ -784,66 +784,67 @@ static const char *xkb_layouts[]  = {
 
 /* key definitions */
 #define MODKEY Mod1Mask
+#define SUBMODKEY ControlMask
 #if COMBO_PATCH && SWAPTAGS_PATCH && TAGOTHERMONITOR_PATCH
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      comboview,      {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      combotag,       {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }, \
-	{ MODKEY|Mod4Mask|ShiftMask,    KEY,      swaptags,       {.ui = 1 << TAG} }, \
-	{ MODKEY|Mod4Mask,              KEY,      tagnextmon,     {.ui = 1 << TAG} }, \
-	{ MODKEY|Mod4Mask|ControlMask,  KEY,      tagprevmon,     {.ui = 1 << TAG} },
+	{ SUBMODKEY,                       KEY,      comboview,      {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|ShiftMask,             KEY,      combotag,       {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|Mod4Mask|ShiftMask,    KEY,      swaptags,       {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|Mod4Mask,              KEY,      tagnextmon,     {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|Mod4Mask|ControlMask,  KEY,      tagprevmon,     {.ui = 1 << TAG} },
 #elif COMBO_PATCH && SWAPTAGS_PATCH
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      comboview,      {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      combotag,       {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }, \
-	{ MODKEY|Mod4Mask|ShiftMask,    KEY,      swaptags,       {.ui = 1 << TAG} },
+	{ SUBMODKEY,                       KEY,      comboview,      {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|ShiftMask,             KEY,      combotag,       {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|Mod4Mask|ShiftMask,    KEY,      swaptags,       {.ui = 1 << TAG} },
 #elif COMBO_PATCH && TAGOTHERMONITOR_PATCH
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      comboview,      {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      combotag,       {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }, \
-	{ MODKEY|Mod4Mask,              KEY,      tagnextmon,     {.ui = 1 << TAG} }, \
-	{ MODKEY|Mod4Mask|ControlMask,  KEY,      tagprevmon,     {.ui = 1 << TAG} },
+	{ SUBMODKEY,                       KEY,      comboview,      {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|ShiftMask,             KEY,      combotag,       {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|Mod4Mask,              KEY,      tagnextmon,     {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|Mod4Mask|ControlMask,  KEY,      tagprevmon,     {.ui = 1 << TAG} },
 #elif COMBO_PATCH
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      comboview,      {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      combotag,       {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+	{ SUBMODKEY,                       KEY,      comboview,      {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|ShiftMask,             KEY,      combotag,       {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 #elif SWAPTAGS_PATCH && TAGOTHERMONITOR_PATCH
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }, \
-	{ MODKEY|Mod4Mask|ShiftMask,    KEY,      swaptags,       {.ui = 1 << TAG} }, \
-	{ MODKEY|Mod4Mask,              KEY,      tagnextmon,     {.ui = 1 << TAG} }, \
-	{ MODKEY|Mod4Mask|ControlMask,  KEY,      tagprevmon,     {.ui = 1 << TAG} },
+	{ SUBMODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|Mod4Mask|ShiftMask,    KEY,      swaptags,       {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|Mod4Mask,              KEY,      tagnextmon,     {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|Mod4Mask|ControlMask,  KEY,      tagprevmon,     {.ui = 1 << TAG} },
 #elif SWAPTAGS_PATCH
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }, \
-	{ MODKEY|Mod4Mask|ShiftMask,    KEY,      swaptags,       {.ui = 1 << TAG} },
+	{ SUBMODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|Mod4Mask|ShiftMask,    KEY,      swaptags,       {.ui = 1 << TAG} },
 #elif TAGOTHERMONITOR_PATCH
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }, \
-	{ MODKEY|Mod4Mask,              KEY,      tagnextmon,     {.ui = 1 << TAG} }, \
-	{ MODKEY|Mod4Mask|ControlMask,  KEY,      tagprevmon,     {.ui = 1 << TAG} },
+	{ SUBMODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|Mod4Mask,              KEY,      tagnextmon,     {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|Mod4Mask|ControlMask,  KEY,      tagprevmon,     {.ui = 1 << TAG} },
 #else
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+	{ SUBMODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
+	{ SUBMODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 #endif // COMBO_PATCH / SWAPTAGS_PATCH / TAGOTHERMONITOR_PATCH
 
 #if STACKER_PATCH
@@ -867,11 +868,11 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 #endif // NODMENU_PATCH
 
 static const char *roficmd[] = {
-	"rofi -show run"
-}
+	"rofi", "-show" , "run", NULL
+};
 static const char *firefoxcmd[] = {
-	"firefox"
-}
+	"firefox", NULL
+};
 static const char *dmenucmd[] = {
 	"dmenu_run",
 	#if !NODMENU_PATCH
@@ -1021,20 +1022,20 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Escape,     setkeymode,             {.ui = COMMANDMODE} },
 	#endif // KEYMODES_PATCH
 	{ MODKEY,                       XK_r,          spawn,                  {.v = roficmd } },
-	{ MODKEY,                       XK_m,          spawn,                  {.v = firefoxcmd } },
+	{ SUBMODKEY,                       XK_m,          spawn,                  {.v = firefoxcmd } },
 	{ MODKEY,                       XK_t,          spawn,                  {.v = termcmd } },
 	#if RIODRAW_PATCH
 	{ MODKEY|ControlMask,           XK_r,          riospawnsync,           {.v = roficmd } },
 	{ MODKEY|ControlMask,           XK_t,     riospawn,                    {.v = termcmd } },
 	{ MODKEY,                       XK_s,          rioresize,              {0} },
 	#endif // RIODRAW_PATCH
-	{ MODKEY,                       XK_b,          togglebar,              {0} },
-	#if TOGGLETOPBAR_PATCH
-	{ MODKEY|ShiftMask,             XK_b,          toggletopbar,           {0} },
-	#endif // TOGGLETOPBAR_PATCH
-	#if TAB_PATCH
-	{ MODKEY|ControlMask,           XK_b,          tabmode,                {-1} },
-	#endif // TAB_PATCH
+	// { MODKEY,                       XK_b,          togglebar,              {0} },
+	// #if TOGGLETOPBAR_PATCH
+	// { MODKEY|ShiftMask,             XK_b,          toggletopbar,           {0} },
+	// #endif // TOGGLETOPBAR_PATCH
+	// #if TAB_PATCH
+	// { MODKEY|ControlMask,           XK_b,          tabmode,                {-1} },
+	// #endif // TAB_PATCH
 	#if FOCUSMASTER_PATCH || FOCUSMASTER_RETURN_PATCH
 	{ MODKEY|ControlMask,           XK_space,      focusmaster,            {0} },
 	#endif // FOCUSMASTER_PATCH / FOCUSMASTER_RETURN_PATCH
@@ -1042,8 +1043,8 @@ static const Key keys[] = {
 	STACKKEYS(MODKEY,                              focus)
 	STACKKEYS(MODKEY|ShiftMask,                    push)
 	#else
-	{ MODKEY,                       XK_j,          focusstack,             {.i = +1 } },
-	{ MODKEY,                       XK_k,          focusstack,             {.i = -1 } },
+	{ SUBMODKEY,                       XK_j,          focusstack,             {.i = +1 } },
+	{ SUBMODKEY,                       XK_BackSpace,          focusstack,             {.i = -1 } },
 	#endif // STACKER_PATCH
 	#if FOCUSDIR_PATCH
 	{ MODKEY,                       XK_Left,       focusdir,               {.i = 0 } }, // left
@@ -1083,8 +1084,8 @@ static const Key keys[] = {
 	{ MODKEY|ControlMask,           XK_i,          incnstack,              {.i = +1 } },
 	{ MODKEY|ControlMask,           XK_u,          incnstack,              {.i = -1 } },
 	#endif // FLEXTILE_DELUXE_LAYOUT
-	{ MODKEY,                       XK_h,          setmfact,               {.f = -0.05} },
-	{ MODKEY,                       XK_l,          setmfact,               {.f = +0.05} },
+	// { MODKEY,                       XK_h,          setmfact,               {.f = -0.05} },
+	// { MODKEY,                       XK_l,          setmfact,               {.f = +0.05} },
 	#if CFACTS_PATCH
 	{ MODKEY|ShiftMask,             XK_h,          setcfact,               {.f = +0.25} },
 	{ MODKEY|ShiftMask,             XK_l,          setcfact,               {.f = -0.25} },
@@ -1184,7 +1185,7 @@ static const Key keys[] = {
 	#endif // SELFRESTART_PATCH
 	{ MODKEY|ShiftMask,             XK_q,          quit,                   {0} },
 	#if RESTARTSIG_PATCH
-	{ MODKEY|ControlMask|ShiftMask, XK_q,          quit,                   {1} },
+	{ SUBMODKEY |ShiftMask,         XK_q,          quit,                   {1} },
 	#endif // RESTARTSIG_PATCH
 	#if FOCUSURGENT_PATCH
 	{ MODKEY,                       XK_u,          focusurgent,            {0} },
@@ -1263,10 +1264,10 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_0,          view,                   {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,          tag,                    {.ui = ~0 } },
 	#endif // SCRATCHPAD_ALT_1_PATCH
-	{ MODKEY,                       XK_comma,      focusmon,               {.i = -1 } },
-	{ MODKEY,                       XK_period,     focusmon,               {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,      tagmon,                 {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period,     tagmon,                 {.i = +1 } },
+	{ SUBMODKEY,                       XK_comma,      focusmon,               {.i = -1 } },
+	{ SUBMODKEY,                       XK_period,     focusmon,               {.i = +1 } },
+	{ SUBMODKEY|ShiftMask,             XK_comma,      tagmon,                 {.i = -1 } },
+	{ SUBMODKEY|ShiftMask,             XK_period,     tagmon,                 {.i = +1 } },
 	#if FOCUSADJACENTTAG_PATCH
 	{ MODKEY,                       XK_Left,       viewtoleft,             {0} }, // note keybinding conflict with focusdir
 	{ MODKEY,                       XK_Right,      viewtoright,            {0} }, // note keybinding conflict with focusdir
